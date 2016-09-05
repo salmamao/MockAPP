@@ -9,7 +9,6 @@
 namespace AppBundle\Controller;
 
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,15 +21,13 @@ class articleController extends Controller
 
 
     /**
-  * @Route("/createArticle/{authUser}", name="articleCreation")
+     * @Route("/createArticle", name="articleCreation")
      */
-    public function createArticleAction($authUser)
+    public function createArticleAction()
     {
-
-          return $this->render('createArticle.html.twig');
+        return $this->render('createArticle.html.twig');
 
     }
-
 
 
 }
