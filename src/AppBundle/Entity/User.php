@@ -36,6 +36,29 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+    /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=255)
@@ -231,6 +254,6 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        return null;
     }
 }
