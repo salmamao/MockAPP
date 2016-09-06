@@ -6,13 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     /**
-     * @Route("/login", name="login")
+     * @Route("/profile", name="profile")
      */
-    public function loginAction()
+    public function profileAction()
     {
-        return $this->render('login/login.html.twig');
+        return $this->render('profile/profile.html.twig');
     }
 }

@@ -1,0 +1,48 @@
+{% extends 'profile.html.twig' %}
+
+{% block body %}
+    <div class="col-md-5  toppad  pull-right col-md-offset-3 " style="margin-top:5% ">
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Profile</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://district5300.org/wp-content/plugins/dacdbplus/img/no_image.jpg" class="img-circle img-responsive"> </div>
+                    <div class=" col-md-9 col-lg-9 ">
+                        <table class="table table-user-information">
+                            <tbody>
+                            <tr>
+                                <td>login</td>
+                                <td>bahiaoui.imane</td>
+                            </tr>
+                            <tr>
+                                <td>First Name</td>
+                                <td>imane</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>bahiaoui</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>Female</td>
+                            </tr>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a href="editUser" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                <span class="pull-right">
+                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                    </span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
