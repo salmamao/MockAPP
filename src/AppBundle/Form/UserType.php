@@ -25,15 +25,7 @@ class UserType extends AbstractType
                 )
                 ->add('firstname', TextType::class)
                 ->add('lastname', TextType::class)
-                ->add('avatar', FileType::class)
-                ->add(
-                    'gender', RadioType::class, [
-                        'choice' => [
-                            'true'  => 'male',
-                            'false' => 'female',
-                        ],
-                    ]
-                );
+                ->add('avatar', FileType::class);
     }
 
 
@@ -42,6 +34,7 @@ class UserType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => 'AppBundle\Entity\User',
+                'attr'       => ['novalidate' => 'novalidate'],
             ]
         );
     }
