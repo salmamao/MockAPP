@@ -27,18 +27,18 @@ class User implements UserInterface
      * @Assert\Length(min=3, max=255)
      * @Assert\NotBlank()
      */
-    private $login;
+    private $login = '';
 
     /**
      * @ORM\Column(type="string")
      * @Assert\Length(min=6, max=255)
      */
-    private $password;
+    private $password = '';
 
     /**
      * @Assert\Length(max=4096)
      */
-    private $plainPassword;
+    private $plainPassword = '';
 
     /**
      * @ORM\Column(type="string")
@@ -60,13 +60,7 @@ class User implements UserInterface
      *     mimeTypes={"image/jpeg", "image/png"}
      * )
      */
-    private $avatar = 'default.png';
-
-    /**
-     * @ORM\Column(type="boolean")
-     * @Assert\NotBlank()
-     */
-    private $gender = true;
+    private $avatar;
 
 
     /**
@@ -135,7 +129,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getAvatar() : string
+    public function getAvatar()
     {
         return $this->avatar;
     }
@@ -147,24 +141,6 @@ class User implements UserInterface
     public function setAvatar(string $avatar)
     {
         $this->avatar = $avatar;
-    }
-
-
-    /**
-     * @return bool
-     */
-    public function getGender() : bool
-    {
-        return $this->gender;
-    }
-
-
-    /**
-     * @param bool $gender
-     */
-    public function setGender(bool $gender)
-    {
-        $this->gender = $gender;
     }
 
 
@@ -255,6 +231,15 @@ class User implements UserInterface
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+    }
+
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
     }
 
 }
