@@ -40,24 +40,6 @@ class User implements UserInterface
      */
     private $plainPassword;
 
-
-    /**
-     * @return mixed
-     */
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-
-    /**
-     * @param mixed $plainPassword
-     */
-    public function setPlainPassword($plainPassword)
-    {
-        $this->plainPassword = $plainPassword;
-    }
-
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
@@ -256,4 +238,23 @@ class User implements UserInterface
     {
         return null;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
 }
