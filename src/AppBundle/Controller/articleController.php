@@ -30,4 +30,16 @@ class articleController extends Controller
     }
 
 
+    /**
+     * @Route("/showArticle", name="Dashboard")
+     */
+    public function showArticleAction()
+    {
+
+        return $this->render('showArticle.html.twig');
+
+
+    }
+
+
 }
