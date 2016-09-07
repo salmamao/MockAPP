@@ -20,6 +20,6 @@ class UserController extends Controller
      */
     public function editUserAction()
     {
-        return $this->render('profile/editUser');
+        return $this->render('profile/editUser.html.twig');
     }
 }
