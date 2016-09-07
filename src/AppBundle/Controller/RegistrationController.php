@@ -29,7 +29,9 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('homepage');
+            $this->addFlash('success', 'Awesome, your registration was successful, now you can log in');
+
+            return $this->redirectToRoute('user_register');
         }
 
         return $this->render(
