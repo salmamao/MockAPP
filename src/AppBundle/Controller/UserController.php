@@ -13,7 +13,11 @@ class UserController extends Controller
      */
     public function profileAction()
     {
-        return $this->render('profile/profile.html.twig');
+        $user = $this->getDoctrine()
+            ->getRepository('AppBundle:User')
+            ->find(7);
+
+        return $this->render('profile/profile.html.twig',array('user' => $user));
     }
     /**
      * @Route("/editUser", name="editUser")
