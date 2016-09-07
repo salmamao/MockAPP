@@ -25,6 +25,22 @@
 <body>
 {% block flash_messages %}
     <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">MockAPP</a>
+                </div>
+                <ul class="nav navbar-nav pull-right">
+                    {% if is_granted('ROLE_USER') %}
+                        <li><a href="{{ path('logout') }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path('login') }}">Login</a></li>
+                        <li><a href="{{ path('user_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 {% for type, messages in app.session.flashbag.all() %}
