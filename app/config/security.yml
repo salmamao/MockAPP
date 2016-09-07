@@ -4,8 +4,12 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+
         our_users:
             entity: { class: AppBundle\Entity\User, property: login }
+        our_db_provider:
+            entity:
+                class: AppBundle\Entity\User
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
