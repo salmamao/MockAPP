@@ -82,6 +82,7 @@ class Article
     {
         $this->publishedAt = $publishedAt;
     }
+
     /**
      * @return mixed
      */
