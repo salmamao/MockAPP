@@ -59,13 +59,6 @@ class Article
         return $this->user_id;
     }
 
-    /**
-     * @param mixed $user_id
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-    }
 
     /**
      * @return mixed
@@ -75,13 +68,6 @@ class Article
         return $this->publishedAt;
     }
 
-    /**
-     * @param mixed $publishedAt
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-    }
 
     /**
      * @return mixed
