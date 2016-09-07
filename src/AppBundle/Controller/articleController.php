@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,6 +26,10 @@ class articleController extends Controller
      */
     public function createArticleAction()
     {
+
+        $article = new Article();
+
+
         return $this->render('createArticle.html.twig');
 
     }
@@ -40,6 +45,8 @@ class articleController extends Controller
 
 
     }
+
+
 
 
 }
