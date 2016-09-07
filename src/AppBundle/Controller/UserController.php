@@ -15,4 +15,11 @@ class UserController extends Controller
     {
         return $this->render('profile/profile.html.twig');
     }
+    /**
+     * @Route("/editUser", name="editUser")
+     */
+    public function editUserAction()
+    {
+        return $this->render('profile/editUser.html.twig');
+    }
 }
