@@ -45,6 +45,22 @@ class Article
     private $publishedAt;
 
     /**
+     * @return mixed
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @param mixed $publishedAt
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="articles", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -59,14 +75,18 @@ class Article
         return $this->user_id;
     }
 
-
     /**
-     * @return mixed
+     * @param mixed $user_id
      */
-    public function getPublishedAt()
+    public function setUserId($user_id)
     {
-        return $this->publishedAt;
+        $this->user_id = $user_id;
     }
+
+
+
+
+
 
 
     /**
