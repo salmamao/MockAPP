@@ -21,7 +21,7 @@ class ArticleService
     }
 
 
-    public function createArticle(Article $article, integer $id)
+    public function createArticle(Article $article, int $id)
     {
         $article->setPublishedAt(new \DateTime());
         $article->setUserId($id);
