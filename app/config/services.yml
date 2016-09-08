@@ -4,15 +4,24 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-    app.security.login_form_authenticator:
-        class: AppBundle\Security\LoginFormAuthenticator
-        autowire: true
+  app.security.login_form_authenticator:
+   class: AppBundle\Security\LoginFormAuthenticator
+   autowire: true
 
-    app.doctrine.hash_password_listener:
-        class: AppBundle\Doctrine\HashPasswordListener
-        autowire: true
-        tags:
-            - { name: doctrine.event_subscriber }
+  app.doctrine.hash_password_listener:
+    class: AppBundle\Doctrine\HashPasswordListener
+    autowire: true
+    tags:
+     - { name: doctrine.event_subscriber }
+
+  app.article_repository:
+    class: AppBundle\Repository\ArticleRepository
+    factory: ["@doctrine", getRepository]
+    arguments:
+            - AppBundle\Entity\Article
+
+  app.article_service:
+    class: AppBundle\Service\ArticleService
+    arguments: ["@app.article_repository"]
+
+
