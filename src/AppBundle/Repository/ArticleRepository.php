@@ -9,9 +9,17 @@
 namespace AppBundle\Repository;
 
 
+use AppBundle\Entity\Article;
 use Doctrine\ORM\EntityRepository;
 
 class ArticleRepository extends EntityRepository
 {
+    public function createArticle(Article $article)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($article);
+        $em->flush();
+    }
+
 
 }

@@ -21,3 +21,13 @@ services:
     app.avatar_uploader:
         class: AppBundle\FileUploader
         arguments: ['%avatars_directory%']
+
+    app.article_repository:
+        class: AppBundle\Repository\ArticleRepository
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AppBundle\Entity\Article
+
+    app.article_service:
+        class: AppBundle\Service\ArticleService
+        arguments: ["@app.article_repository"]
