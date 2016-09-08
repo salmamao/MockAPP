@@ -126,23 +126,18 @@ class User implements UserInterface
     }
 
 
-    /**
-     * @return string
-     */
+
     public function getAvatar()
     {
         return $this->avatar;
     }
 
-
-    /**
-     * @param string $avatar
-     */
-    public function setAvatar(string $avatar)
+    public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
-    }
 
+        return $this;
+    }
 
     /**
      * Returns the roles granted to the user.
