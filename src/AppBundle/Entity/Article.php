@@ -16,7 +16,6 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank()
      */
     private $id;
     /**
@@ -60,11 +59,12 @@ class Article
         $this->publishedAt = $publishedAt;
     }
 
+
     /**
+     * @ORM\Column(type="integer",nullable=TRUE)
      * @ORM\ManyToOne(targetEntity="User", inversedBy="articles", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-
     private $user_id;
 
     /**
@@ -82,11 +82,6 @@ class Article
     {
         $this->user_id = $user_id;
     }
-
-
-
-
-
 
 
     /**
