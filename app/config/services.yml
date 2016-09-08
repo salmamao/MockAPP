@@ -31,3 +31,8 @@ services:
     app.article_service:
         class: AppBundle\Service\ArticleService
         arguments: ["@app.article_repository"]
+
+    app.listarticle_service:
+        class: AppBundle\Service\ListArticleService
+        arguments: ["@app.article_repository"]
+

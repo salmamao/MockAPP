@@ -16,48 +16,52 @@
 
 {% block body %}
     <div class="class=container">
-        <div class="col-md-6 col-md-offset-3" style="margin-top: 10%; margin-bottom: 10%;">
+        <div class="col-md-6 col-md-offset-3" style="margin-top: 3%; margin-bottom: 10%;">
 
+            <h1 style="text-align: center;">Hello {{ userLogin }}!</h1>
 
-            <h2>Dashboard</h2>
+            <h2 style="color: #337ab7">Dashboard</h2>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a type="submit" href="{{ path('articleCreation') }}"
+                       class="btn btn-primary" style=" margin-left: 300px;">create new article
+                    </a>
+                </div>
+            </div>
             <p>All your arlicles are displayed here</p>
             <table class="table">
                 <thead>
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>body</th>
+                    <th>Body</th>
+                    <th>Published At</th>
                 </tr>
                 </thead>
+
                 <tbody>
-                <tr class="success">
-                    <td>title1 test statique</td>
-                    <td>description1 test statique</td>
-                    <td>body1 test statique: ffffffffffffffffffffff
-                        fddddddddddddddd
-                        fddddddddddddddddddddddddddddddd
-                        fdddddddddddddddddddddddddddd
-                    </td>
-                </tr>
-                <tr class="danger">
-                    <td>title2 test statique</td>
-                    <td>description2 test statique</td>
-                    <td>body2 test statique: ffffffffffffffffffffff
-                        fddddddddddddddd
-                        fddddddddddddddddddddddddddddddd
-                        fdddddddddddddddddddddddddddd
-                    </td>
-                </tr>
-                <tr class="info">
-                    <td>title3 test statique</td>
-                    <td>description3 test statique</td>
-                    <td>body3 test statique: ffffffffffffffffffffff
-                        fddddddddddddddd
-                        fddddddddddddddddddddddddddddddd
-                        fdddddddddddddddddddddddddddd
-                    </td>
-                </tr>
+                {% for article in articles %}
+                    <tr>
+                        <td>
+                            {{ article.Title }}
+                        </td>
+                        <td>
+                            {{ article.Description }}
+                        </td>
+                        <td>
+                            {{ article.Body }}
+                        </td>
+                        <td>
+                            {{ article.publishedAt|date('Y-m-d H:i:s') }}
+                        </td>
+
+
+                    </tr>
+
+                {% endfor %}
+
                 </tbody>
+
             </table>
 
 
