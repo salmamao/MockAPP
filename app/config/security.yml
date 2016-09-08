@@ -4,8 +4,12 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+
+        our_users:
+            entity: { class: AppBundle\Entity\User, property: login }
+        our_db_provider:
+            entity:
+                class: AppBundle\Entity\User
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -20,7 +24,15 @@ security:
             # http_basic: ~
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
-            # form_login: ~
+            form_login:
+                login_path: login
+                check_path: login
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+            logout:
+                path: /logout
+            guard:
+                authenticators:
+                    - app.security.login_form_authenticator
     encoders:
       AppBundle\Entity\User: bcrypt

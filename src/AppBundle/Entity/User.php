@@ -162,7 +162,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return [];
+        return ['ROLE_USER'];
     }
 
 
@@ -176,7 +176,16 @@ class User implements UserInterface
      */
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->password;
+    }
+
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 
@@ -212,7 +221,7 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        return null;
+        $this->plainPassword = null;
     }
 
 
@@ -231,6 +240,7 @@ class User implements UserInterface
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+        $this->password      = null;
     }
 
 
