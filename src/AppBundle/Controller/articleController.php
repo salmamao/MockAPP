@@ -4,8 +4,6 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Article;
-use AppBundle\Service;
-
 use AppBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,18 +25,13 @@ class articleController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-
             if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
                 throw $this->createAccessDeniedException();
             }
             $userAuth = $this->getUser();
-            $userAuthId = (int)$userAuth->getId();
-
+            $userAuthId = $userAuth->getId();
             $this->container->get("app.article_service")->createArticle($article, $userAuthId);
-
             $userLogin = $userAuth->getLogin();
-
-
             $this->addFlash('success', 'Congrats  '.$userLogin.'   ! your article was created successfully.');
 
             return $this->redirectToRoute('articleCreation');
@@ -64,11 +57,14 @@ class articleController extends Controller
         }
         $userAuth = $this->getUser();
         $userLogin = $userAuth->getLogin();
+        $userId = $userAuth->getId();
+        $articles = $this->container->get("app.listarticle_service")->displayArticles($userId);
 
         return $this->render(
             '/ArticleViews/showArticle.html.twig',
             [
                 'userLogin' => $userLogin,
+                'articles' => $articles,
             ]
         );
 
