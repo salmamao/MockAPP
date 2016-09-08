@@ -29,6 +29,12 @@ class UserController extends Controller
         $user = $this->getDoctrine()
             ->getRepository('AppBundle:User')
             ->find($id);
+
+        if($user->getAvatar())
+        {
+            $user->setAvatar(null);
+        }
+
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
 
@@ -36,18 +42,9 @@ class UserController extends Controller
 
             $file = $user->getAvatar();
 
-            // Generate a unique name for the file before saving it
-//            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-//
-//            // Move the file to the directory where brochures are stored
-//            $file->move(
-//                $this->getParameter('avatars_directory'),
-//                $fileName
-//            );
-
             $fileName = $this->get('app.avatar_uploader')->upload($file);
 
-            // Update the 'brochure' property to store the PDF file name
+            // Update the 'avatars' property to store the file name
             // instead of its contents
             $user->setAvatar($fileName);
 
