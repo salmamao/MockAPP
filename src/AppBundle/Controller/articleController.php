@@ -4,11 +4,13 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Article;
-use AppBundle\Entity\User;
+use AppBundle\Service;
+
 use AppBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class articleController extends Controller
 {
@@ -27,22 +29,17 @@ class articleController extends Controller
 
             $article->setPublishedAt(new \DateTime());
 
-            $em = $this->getDoctrine()
-                ->getManager();
 
             if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
                 throw $this->createAccessDeniedException();
             }
             $userAuth = $this->getUser();
-            $userAuthId = $userAuth->getId();
-            $user = $em->getRepository('AppBundle\Entity\User')
-                ->find($userAuthId);
-            $userId = $user->getId();
-            $userLogin = $user->getLogin();
-            $article->setUserId($userId);
+            $userAuthId = (int)$userAuth->getId();
 
-            $em->persist($article);
-            $em->flush();
+            $this->container->get("app.article_service")->createArticle($article, $userAuthId);
+
+            $userLogin = $userAuth->getLogin();
+
 
             $this->addFlash('success', 'Congrats  '.$userLogin.'   ! your article was created successfully.');
 
