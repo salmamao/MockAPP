@@ -10,21 +10,21 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://district5300.org/wp-content/plugins/dacdbplus/img/no_image.jpg" class="img-circle img-responsive"> </div>
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ asset('uploads/avatars/' ~ user.avatar) }}" class="img-circle img-responsive" style="width: 200px;height: 100px;"> </div>
                     <div class=" col-md-9 col-lg-9 ">
                         <table class="table table-user-information">
                             <tbody>
                             <tr>
                                 <td>login</td>
-                                <td>bahiaoui.imane</td>
+                                <td>{{ user.login }}</td>
                             </tr>
                             <tr>
                                 <td>First Name</td>
-                                <td>imane</td>
+                                <td>{{ user.firstname }}</td>
                             </tr>
                             <tr>
                                 <td>Last Name</td>
-                                <td>bahiaoui</td>
+                                <td>{{ user.lastname }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <a href="editUser" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="editUser/{{ user.id }}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
                 <span class="pull-right">
                         <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                     </span>

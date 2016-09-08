@@ -62,7 +62,6 @@ class User implements UserInterface
      */
     private $avatar;
 
-
     /**
      * @return int
      */
@@ -125,7 +124,6 @@ class User implements UserInterface
         $this->lastname = $lastname;
     }
 
-
     /**
      * @return string
      */
@@ -138,11 +136,10 @@ class User implements UserInterface
     /**
      * @param string $avatar
      */
-    public function setAvatar(string $avatar)
+    public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
     }
-
 
     /**
      * Returns the roles granted to the user.
