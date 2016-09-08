@@ -7,6 +7,7 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
     app.security.login_form_authenticator:
         class: AppBundle\Security\LoginFormAuthenticator
         autowire: true
@@ -16,3 +17,7 @@ services:
         autowire: true
         tags:
             - { name: doctrine.event_subscriber }
+
+    app.avatar_uploader:
+        class: AppBundle\FileUploader
+        arguments: ['%avatars_directory%']
