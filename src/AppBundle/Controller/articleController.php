@@ -59,7 +59,18 @@ class articleController extends Controller
     public function showArticleAction()
     {
 
-        return $this->render('/ArticleViews/showArticle.html.twig');
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $userAuth = $this->getUser();
+        $userLogin = $userAuth->getLogin();
+
+        return $this->render(
+            '/ArticleViews/showArticle.html.twig',
+            [
+                'userLogin' => $userLogin,
+            ]
+        );
 
 
     }
