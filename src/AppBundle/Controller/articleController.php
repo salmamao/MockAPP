@@ -51,10 +51,7 @@ class articleController extends Controller
      */
     public function showArticleAction()
     {
-
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
-        }
+        
         $userAuth = $this->getUser();
         $userLogin = $userAuth->getLogin();
         $userId = $userAuth->getId();
