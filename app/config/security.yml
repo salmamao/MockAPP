@@ -34,5 +34,6 @@ security:
             guard:
                 authenticators:
                     - app.security.login_form_authenticator
+
     encoders:
-      AppBundle\Entity\User: bcrypt
+        AppBundle\Entity\User: bcrypt

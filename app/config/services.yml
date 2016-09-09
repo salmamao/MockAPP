@@ -36,3 +36,10 @@ services:
         class: AppBundle\Service\ListArticleService
         arguments: ["@app.article_repository"]
 
+    app.exception_listener:
+            class: AppBundle\Listener\RedirectUserListener
+            arguments:
+                - "@security.token_storage"
+                - "@router"
+            tags:
+                - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
