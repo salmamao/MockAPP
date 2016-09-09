@@ -31,12 +31,12 @@ class ArticleServiceTest extends \PHPUnit_Framework_TestCase
 
         $mockArticleService = $this->getMockBuilder('AppBundle\Service\ArticleService')
             ->setConstructorArgs(array($mockArticleRepository))
-           ->setMethods(null)
+            ->setMethods(null)
             ->getMock();
 
-        $result = $mockArticleService->createArticle($article,1);
+        $result = $mockArticleService->createArticle($article, 1);
 
-        $this->assertEquals($result,$article);
+        $this->assertEquals($result, $article);
     }
 
 }
