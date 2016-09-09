@@ -32,10 +32,6 @@ services:
         class: AppBundle\Service\ArticleService
         arguments: ["@app.article_repository"]
 
-    app.listarticle_service:
-        class: AppBundle\Service\ListArticleService
-        arguments: ["@app.article_repository"]
-
     app.exception_listener:
             class: AppBundle\Listener\RedirectUserListener
             arguments:

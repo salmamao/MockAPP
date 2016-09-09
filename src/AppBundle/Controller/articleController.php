@@ -52,7 +52,7 @@ class articleController extends Controller
         $userAuth = $this->getUser();
         $userLogin = $userAuth->getLogin();
         $userId = $userAuth->getId();
-        $articles = $this->container->get("app.listarticle_service")->displayArticles($userId);
+        $articles = $this->container->get("app.article_service")->displayArticles($userId);
 
         return $this->render(
             '/ArticleViews/showArticle.html.twig',
