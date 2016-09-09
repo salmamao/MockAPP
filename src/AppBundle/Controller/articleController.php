@@ -24,10 +24,7 @@ class articleController extends Controller
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-                throw $this->createAccessDeniedException();
-            }
+            
             $userAuth = $this->getUser();
             $userAuthId = $userAuth->getId();
             $this->container->get("app.article_service")->createArticle($article, $userAuthId);
@@ -51,7 +48,7 @@ class articleController extends Controller
      */
     public function showArticleAction()
     {
-        
+
         $userAuth = $this->getUser();
         $userLogin = $userAuth->getLogin();
         $userId = $userAuth->getId();
