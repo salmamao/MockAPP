@@ -33,5 +33,12 @@ class ArticleService
         return $article;
     }
 
+    public function displayArticles(int $userId)
+    {
+        $articles = $this->articleRepository->findBy(
+            array('user_id' => $userId)
+        );
 
+        return $articles;
+    }
 }
